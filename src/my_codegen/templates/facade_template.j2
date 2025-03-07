@@ -1,6 +1,9 @@
 {% set docstring_indent = '    ' %}
 from typing import Optional
 
+import requests as requests
+
+
 {% for imp in imports %}
 from endpoints.{{ imp.module_name }} import {{ imp.class_name }}
 {% endfor %}

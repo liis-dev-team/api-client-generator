@@ -1,6 +1,8 @@
 {% set docstring_indent = '    ' %}
 from typing import Optional
 
+import requests as requests
+
 {% for srv in services %}
 from http_clients.{{ srv.service_name }}.facade import {{ srv.api_class }}
 {% endfor %}
