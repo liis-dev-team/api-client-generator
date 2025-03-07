@@ -5,7 +5,7 @@ import requests as requests
 
 
 {% for imp in imports %}
-from endpoints.{{ imp.module_name }} import {{ imp.class_name }}
+from http_clients.cde.endpoints.{{ imp.module_name }} import {{ imp.class_name }}
 {% endfor %}
 
 
