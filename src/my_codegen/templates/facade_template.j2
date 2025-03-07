@@ -7,7 +7,7 @@ from endpoints.{{ imp.module_name }} import {{ imp.class_name }}
 
 
 class {{ facade_class_name }}:
-    def __init__(self, auth_token: Optional[str] = None):
+    def __init__(self, auth_token: Optional[str] = None, session: Optional[requests.Session] = None):
         {% for imp in imports %}
-        self.{{ imp.attribute_name }} = {{ imp.class_name }}(auth_token)
+        self.{{ imp.attribute_name }} = {{ imp.class_name }}(auth_token, session=session)
         {% endfor %}

@@ -12,9 +12,10 @@ class ApiFacade:
     {{ srv.service_name }}: "{{ srv.api_class }}"
     {% endfor %}
 
-    def __init__(self, auth_token: Optional[str] = None):
-        self.auth_token = auth_token
-        self._instances = {}
+    def __init__(self, auth_token: Optional[str] = None, session: Optional[requests.Session] = None):
+       self.auth_token = auth_token
+       self.session = session
+       self._instances = {}
 
     def __getattr__(self, name: str):
         if name not in self._instances:
