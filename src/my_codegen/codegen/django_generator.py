@@ -259,10 +259,11 @@ def generate_django_code(swagger_dict: Dict[str, Any], base_output_dir: str) -> 
         output_file.write_text(rendered_class, encoding="utf-8")
         print(f"[Django] Клиент для группы '{tag}' сгенерирован в {output_file}")
 
-    # Генерация фасада
-    facade_template_path = Path("facade_template.jinja")
+    TEMPLATE_DIR = Path(os.path.dirname(os.path.abspath(__file__))).parent / "templates"
+    facade_template_path = TEMPLATE_DIR / "facade_template.j2"
+
     if not facade_template_path.exists():
-        raise FileNotFoundError("Файл шаблона facade_template.jinja не найден.")
+        raise FileNotFoundError(f"Файл шаблона {facade_template_path} не найден.")
 
     facade_template_str = facade_template_path.read_text(encoding="utf-8")
     facade_template = Template(facade_template_str)
@@ -284,7 +285,7 @@ def generate_django_code(swagger_dict: Dict[str, Any], base_output_dir: str) -> 
     FACADE_OUTPUT_FILE.write_text(rendered_facade, encoding="utf-8")
     print(f"[Django] Фасад сгенерирован в {FACADE_OUTPUT_FILE}")
 
-    # Записываем все сгенерированные модели в файл models.py
+
     rendered_models = Template(
         '''from __future__ import annotations
 from pydantic import BaseModel, Field
