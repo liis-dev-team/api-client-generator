@@ -13,7 +13,7 @@ from my_codegen.pydantic_utils.pydantic_config import BaseConfigModel
 
 from pydantic import Field, StringConstraints, RootModel
 
-from src.my_codegen.http_clients.cde.models import CreateApprovalProcessTemplateRequest
+#from src.my_codegen.http_clients.cde.models import CreateApprovalProcessTemplateRequest
 
 fake = Faker()
 
